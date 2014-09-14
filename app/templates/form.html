@@ -1,0 +1,33 @@
+<h2>Roll the dice</h2>
+
+{#  {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %} #}
+  <form action="{{ url_for('result') }}" method=post>
+    <dl>
+      Check: 
+      <input type=number name=check font="16" id="check">
+      <br>
+      Dice:  
+      <input type=text name=dice size=8 id="dice">
+      <br>
+      Bonus: 
+      <input type=number name=bonus value="0" id="bonus">
+      
+      <dd><br>
+      Add these dice: <br>
+      <input type=button id="add4" value="d4" size="20">
+      <input type=button id="add6" value="d6">
+      <input type=button id="add8" value="d8">
+      <br>
+      <input type=button id="add10" value="d10">
+      <input type=button id="add12" value="d12">
+      <input type=button id="add20" value="d20">
+
+      <br><br>
+      <dd><input type=submit value=Odds! id="odds">
+      <br><br>
+
+      <dt>Roll for me:
+      <input type=checkbox name=roll_for_me value="off" id="roll_for_me">
+    </dl>
+  </form>
+

@@ -1,0 +1,155 @@
+<!doctype html>
+<head>
+<title>Hello dice player</title>
+<font size="48px">
+<style>
+input[type='text'] { font-size: 24px; }
+input[type='number'] { font-size: 24px; }
+input[type='checkbox'] { font-size: 24px; }
+input[type='submit'] { font-size: 24px; }
+
+#check {
+  width: 3em;  height: 2em; font-size: 32px;
+}
+
+#dice {
+  width: 5em;  height: 2em; font-size: 32px;
+}
+
+#bonus {
+  width: 3em;  height: 2em; font-size: 32px;
+}
+
+#roll_for_me {
+  width: 20px;  height: 20px;
+}
+
+#odds {
+  width: 4.5em;  height: 3em; font-size: 32px;
+}
+
+#add4 {
+  width: 4em;  height: 2em; font-size: 32px;
+}
+#add6 {
+  width: 4em;  height: 2em; font-size: 32px;
+}
+#add8 {
+  width: 4em;  height: 2em; font-size: 32px;
+}
+#add10 {
+  width: 4em;  height: 2em; font-size: 32px;
+}
+#add12 {
+  width: 4em;  height: 2em; font-size: 32px;
+}
+#add20 {
+  width: 4em;  height: 2em; font-size: 32px;
+}
+
+</style>
+
+
+<script
+src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
+</script>
+
+<script>
+
+$(document).ready(function(){
+  $("#add4").click(function()
+    {
+      var old_text = $( "#dice" ).val()
+      var mytext = old_text.concat(" 4");
+      $( "#dice" ).val(mytext);
+    }
+  )
+});
+
+$(document).ready(function(){
+  $("#add6").click(function()
+    {
+      var old_text = $( "#dice" ).val()
+      var mytext = old_text.concat(" 6");
+      $( "#dice" ).val(mytext);
+    }
+  )
+});
+
+$(document).ready(function(){
+  $("#add8").click(function()
+    {
+      var old_text = $( "#dice" ).val()
+      var mytext = old_text.concat(" 8");
+      $( "#dice" ).val(mytext);
+    }
+  )
+});
+
+$(document).ready(function(){
+  $("#add10").click(function()
+    {
+      var old_text = $( "#dice" ).val()
+      var mytext = old_text.concat(" 10");
+      $( "#dice" ).val(mytext);
+    }
+  )
+});
+
+$(document).ready(function(){
+  $("#add12").click(function()
+    {
+      var old_text = $( "#dice" ).val()
+      var mytext = old_text.concat(" 12");
+      $( "#dice" ).val(mytext);
+    }
+  )
+});
+
+$(document).ready(function(){
+  $("#add20").click(function()
+    {
+      var old_text = $( "#dice" ).val()
+      var mytext = old_text.concat(" 20");
+      $( "#dice" ).val(mytext);
+    }
+  )
+});
+
+</script>
+
+
+</head>
+{% include "form.html" %}
+
+<body>
+
+Required check: <b>{{ required_check }}</b><br>
+
+{% if dice_str %}
+  You use the following dice: <b>{{ dice_str }}</b> <br>
+{% endif %}
+{% if bonus %}
+  Your bonus on the check is <b>{{ bonus }}</b>. <br>
+{% endif %}
+
+
+{% if sums %}
+  Your odds of winning are <b>{{ sums|int }} in {{ totals|int }}</b>.
+  <br>
+  This is <b>{{ percent|int }}</b> percent.
+{% endif %}
+
+<br><br>
+{% if outcome %}
+  You rolled <b>{{ outcome }}</b> for a total of <b>{{ outcome_sum }}</b>.
+  <br>
+  {% if outcome_sum >= required_check %}
+    You succeed!
+  {% else %}
+    You lose!
+  {% endif %}
+{% endif %}
+
+</font>
+</body>
