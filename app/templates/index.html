@@ -1,6 +1,6 @@
 <!doctype html>
 <head>
-<title>Hello dice player</title>
+<title>Welcome to diceon</title>
 <font size="48px">
 <style>
 input[type='text'] { font-size: 24px; }
@@ -13,7 +13,7 @@ input[type='submit'] { font-size: 24px; }
 }
 
 #dice {
-  width: 5em;  height: 2em; font-size: 32px;
+  width: 8em;  height: 2em; font-size: 32px;
 }
 
 #bonus {
@@ -118,17 +118,23 @@ $(document).ready(function(){
 
 </script>
 
-
 </head>
+
 {% include "form.html" %}
 
 <body>
 
 Required check: <b>{{ required_check }}</b><br>
 
+
 {% if dice_str %}
-  You use the following dice: <b>{{ dice_str }}</b> <br>
+  {% if num_dice > 1 %}
+    You use the following dice: <b>{{ dice_str }}</b> <br>
+  {% else %}
+    You use the following die: <b>{{ dice_str }}</b> <br>
+  {% endif %}
 {% endif %}
+
 {% if bonus %}
   Your bonus on the check is <b>{{ bonus }}</b>. <br>
 {% endif %}
@@ -138,6 +144,10 @@ Required check: <b>{{ required_check }}</b><br>
   Your odds of winning are <b>{{ sums|int }} in {{ totals|int }}</b>.
   <br>
   This is <b>{{ percent|int }}</b> percent.
+{% endif %}
+
+{% if sums == 0 %}
+  You cannot win this check.
 {% endif %}
 
 <br><br>

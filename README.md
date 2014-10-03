@@ -2,6 +2,10 @@
 
 This simple script allows you to calculate your odds of winning a check using different dice. This might be useful for playing role playing games.
 
+Now hosted at heroku:
+
+[diceon](http://diceon.herokuapp.com)
+
 ## Usage
 In the app folder, run:
 
